@@ -24,6 +24,7 @@ Sistema completo de gestión de calificaciones para instituciones educativas, co
 - 📈 Cálculo de calificación por trimestre (ponderado)
 - 🎓 Cálculo de calificación final del curso
 - ✏️ Agregar, editar y eliminar calificaciones
+- 📊 Exportación de calificaciones a Excel
 - 👥 Gestión de estudiantes, cursos y materias
 - 🔐 Sistema de autenticación (Admin/Profesor/Estudiante)
 

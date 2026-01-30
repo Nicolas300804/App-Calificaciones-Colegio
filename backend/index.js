@@ -26,6 +26,7 @@ app.use("/api/students", require("./routes/studentRoutes"));
 app.use("/api/assignments", require("./routes/assignmentRoutes"));
 app.use("/api/teacher", require("./routes/teacherRoutes"));
 app.use("/api/grades", require("./routes/gradeRoutes"));
+app.use("/api/export", require("./routes/exportRoutes"));
 
 app.use(notFound);
 app.use(errorHandler);

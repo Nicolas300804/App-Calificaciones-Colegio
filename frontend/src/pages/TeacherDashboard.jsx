@@ -139,6 +139,31 @@ const TeacherDashboard = () => {
     navigate("/login");
   };
 
+  const handleExportExcel = async () => {
+    try {
+      const response = await api.get(
+        `/export/grades/${selectedCourse._id}/${selectedSubject._id}`,
+        {
+          responseType: "blob",
+        },
+      );
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute(
+        "download",
+        `Calificaciones_${selectedCourse.name}_${selectedSubject.name}.xlsx`,
+      );
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    } catch (error) {
+      console.error("Error exporting excel:", error);
+      alert("Error al descargar el archivo Excel");
+    }
+  };
+
   const currentStudent = students.find((s) => s._id === selectedStudent);
   const trimesterGrade = currentStudent
     ? calculateTrimesterGrade(currentStudent.grades[selectedTrimester])
@@ -242,6 +267,9 @@ const TeacherDashboard = () => {
                   {selectedCourse.name} - {selectedCourse.academicYear}
                 </p>
               </div>
+              <button onClick={handleExportExcel} className="btn-primary">
+                📊 Descargar Excel
+              </button>
             </div>
 
             {/* Trimester Tabs */}
